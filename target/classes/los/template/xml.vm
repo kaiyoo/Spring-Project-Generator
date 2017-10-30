@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+	<sqlMap namespace="${methodName}">
+		<typeAlias alias="${methodName}VO" type="${packageName}.vo.${bizName}VO"/>
+
+	<sql id = "commonSelect">
+		SELECT
+	 		#foreach($i in [0..$count])
+     			#if($i != 0), #else  #end $colList.get($i) AS $varList.get($i) 
+     		#end
+		FROM ${tableName}
+		WHERE 1=1
+	</sql>
+	
+	<select id="${bizName}Info" resultClass = "${packageName}.vo.${bizName}VO" parameterClass="map">
+		<include refid = "${methodName}.commonSelect"/>
+			<dynamic>
+				#foreach($i in [0..$count])
+					<isNotEmpty property="$varList.get($i)" open="AND">
+						$colList.get($i) = #$varList.get($i)# 
+					</isNotEmpty>
+				#end
+			</dynamic> 
+	</select>
+	
+	<!-- 목록조회 -->
+	<select id="${bizName}List" resultClass = "${methodName}VO"> 
+        <include refid = "${methodName}.commonSelect"/>
+        <dynamic>   
+	     	#foreach($i in [0..$count])
+	   			<isNotEmpty property="$varList.get($i)" open="AND">
+	           		$colList.get($i) = #$varList.get($i)# 
+	        	</isNotEmpty>
+	     	#end 
+     	</dynamic>
+	</select>
+
+	<insert id="insert${bizName}Info" parameterClass="${methodName}VO">
+		INSERT INTO ${tableName}(
+		  #foreach($i in [0..$count])
+		  	#if($i != 0), #else  #end $colList.get($i)
+		  #end
+	  ) VALUES (
+	     #foreach($i in [0..$count])
+	     	#if($i != 0), #else  #end #$varList.get($i)#
+	     #end
+	  )
+	</insert>
+	w
+	<update id="update${bizName}Info" parameterClass="${methodName}VO">
+		UPDATE ${tableName}
+		SET
+		  #foreach($i in [0..$count])
+		  	#if($i != 0), #else  #end $colList.get($i) = #$varList.get($i)#
+		  #end
+		  WHERE 1=1
+ 		  #foreach($i in [0..$count])
+		  	AND $colList.get($i) = #$varList.get($i)# 
+	   	  #end
+	</update>
+	
+	<delete id="delete${bizName}Info" parameterClass="map">
+		DELETE FROM ${tableName}
+		WHERE 1=1
+		#foreach($i in [0..$count])
+			AND $colList.get($i) = #$varList.get($i)#
+		#end
+	</delete>
+	
+</sqlMap>
+	

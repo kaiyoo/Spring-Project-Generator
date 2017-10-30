@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace = "webXML">
+	<typeAlias alias="webXMLVO" type="los.vo.WebXMLVO"/>
+	
+	<sql id="selectAll">
+		SELECT * 
+		FROM   PR_WEB_INFO
+		WHERE 1 = 1
+	</sql>
+	
+	<select id="getWebXMLInfo" parameterClass="map" resultClass="webXMLVO">
+		<include refid="selectAll"/>
+		<dynamic>
+			<isNotEmpty property="pr_no" open="AND">
+				PR_NO = #pr_no#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<insert id="insertWebXMLInfo" parameterClass="webXMLVO">
+		INSERT INTO PR_WEB_INFO(
+			PR_NO
+		  , PR_URL_PTRN
+		  , PR_CTX_CONF_FLD
+		  , PR_CTX_CONF_FILE
+		  , PR_SVLT_FLD
+		  , PR_SVLT_FILE
+		  , PR_SESSION_TIME
+		) VALUES (
+			#pr_no#
+		  , #pr_url_ptrn#
+		  , #pr_ctx_conf_fld#
+		  , #pr_ctx_conf_file#
+		  , #pr_svlt_fld#
+		  , #pr_svlt_file#
+		  , #pr_session_time#	
+		)
+	</insert>
+	
+	<update id="updateWebXMLInfo" parameterClass="webXMLVO">
+		UPDATE PR_WEB_INFO 
+		SET	   PR_URL_PTRN = #pr_url_ptrn#
+			 , PR_CTX_CONF_FLD = #pr_ctx_conf_fld#
+			 , PR_CTX_CONF_FILE = #pr_ctx_conf_file#
+			 , PR_SVLT_FLD = #pr_svlt_fld#
+			 , PR_SVLT_FILE = #pr_svlt_file#
+			 , PR_SESSION_TIME = #pr_session_time#
+		WHERE PR_NO = #pr_no#
+	</update>
+</sqlMap>

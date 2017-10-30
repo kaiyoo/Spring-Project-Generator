@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace = "board">
+	<typeAlias alias="boardVO" type="los.vo.BoardVO"/>
+	<typeAlias alias="fileitemVO" type="los.vo.FileItemVO"/>
+	<typeAlias alias="replyVO" type="los.vo.ReplyVO"/>
+	
+	<resultMap class="boardVO" id="boardMap" groupBy="board_no">
+		<result property="rnum" column="rnum"/>
+		<result property="board_no" column="board_no"/>
+		<result property="board_title" column="board_title"/>
+		<result property="board_gubun" column="board_gubun"/>
+		<result property="board_writer" column="board_writer"/>
+		<result property="board_content" column="board_content"/>
+		<result property="board_group" column="board_group"/>
+		<result property="board_status" column="board_status"/>
+		<result property="board_hit" column="board_hit"/>
+		<result property="board_reg_date" column="board_reg_date"/>
+		<result property="fileList" column="board_no" select="board.fileitemList"/> 
+	</resultMap>
+	<resultMap class="fileitemVO" id="fileitemMap">
+		<result property="file_no" column="file_no"/>
+		<result property="file_board_no" column="file_board_no"/>
+		<result property="file_name" column="file_name"/>
+		<result property="file_save_name" column="file_save_name"/>
+		<result property="file_content_type" column="file_content_type"/>
+		<result property="file_size" column="file_size"/>
+		<result property="file_status" column="file_status"/>
+		<result property="file_down_hit" column="file_down_hit"/>
+	</resultMap>	
+	
+	<statement id="fileitemList" resultClass="fileitemVO">
+		 SELECT *
+		 FROM FILE_ITEM
+		 WHERE FILE_BOARD_NO = #board_no#
+	</statement>
+	
+	<sql id="selectAll">
+		SELECT * 
+		FROM BOARD
+		WHERE 1 = 1
+	</sql>
+	
+	<sql id="replyselectAll">
+		SELECT * 
+		FROM REPLY
+		WHERE 1 = 1
+	</sql>
+	
+	<sql id="searchCondition">
+		<isNotEmpty property="search_keyword" open="AND">
+			<isEqual property="search_keycode" compareValue="ALL">
+				(BOARD_TITLE LIKE '%' || #search_keyword# || '%' 
+				OR BOARD_CONTENT LIKE '%' || #search_keyword# || '%'
+				OR BOARD_WRITER LIKE '%' || #search_keyword# || '%')
+			</isEqual>
+			<isEqual property="search_keycode" compareValue="TITLE">
+				BOARD_TITLE LIKE '%' || #search_keyword# || '%'
+			</isEqual>
+			<isEqual property="search_keycode" compareValue="CONTENT">
+				BOARD_CONTENT LIKE '%' || #search_keyword# || '%'
+			</isEqual>
+			<isEqual property="search_keycode" compareValue="WRITER">
+				BOARD_WRITER LIKE '%' || #search_keyword# || '%'
+			</isEqual>
+		</isNotEmpty>
+		<isNotEmpty property="board_gubun" open="AND">
+			BOARD_GUBUN  = #board_gubun#
+		</isNotEmpty>		
+		<isNotEmpty property="board_status" open="AND">
+			BOARD_STATUS = #board_status#
+		</isNotEmpty>
+	</sql>
+
+	<select id="boardList" parameterClass="map" resultMap="boardMap">
+		SELECT B.*
+		FROM   ( SELECT ROWNUM RNUM
+  					  , A.*
+				 FROM (<include refid="selectAll" />
+				 	   <include refid="searchCondition" />						
+				 	   ORDER BY BOARD_NO
+				  	  ) A ) B
+		<![CDATA[
+		WHERE B.RNUM <= #start_count#
+		AND   B.RNUM >= #end_count# 
+		]]>
+		ORDER BY RNUM DESC			
+	</select>
+	
+	<select id="totalBoardCount" parameterClass="map" resultClass="int">
+		SELECT COUNT(*)
+		FROM   BOARD
+		WHERE  1 = 1
+		<include refid="searchCondition"/>
+	</select>
+	
+	<update id="updateBoardHit" parameterClass="map">
+		UPDATE BOARD
+		   SET BOARD_HIT = BOARD_HIT + 1
+		 WHERE BOARD_NO = #board_no#
+	</update>
+	
+	<update id="updateBoardInfo" parameterClass="boardVO">
+		UPDATE BOARD
+		SET BOARD_TITLE 	= #board_title#,
+			BOARD_CONTENT 	= #board_content#
+		WHERE BOARD_NO		= #board_no#
+	</update>
+	
+	<select id="boardInfo" resultMap="boardMap" parameterClass="map">
+		SELECT ROWNUM rnum, A.*
+		FROM(<include refid="selectAll"/>
+				<dynamic>
+					<isNotEmpty property="board_no" open="AND">
+						BOARD_NO=#board_no#
+					</isNotEmpty>
+				</dynamic>
+				)A
+	</select>
+	
+	<update id="updateBoardStatusDel" parameterClass="map">
+		UPDATE BOARD
+		   SET BOARD_STATUS='N'
+		 WHERE BOARD_NO = #board_no# 
+	</update>
+	
+	
+	
+	<insert id="insertBoardInfo" parameterClass="boardVO">
+		<selectKey keyProperty="board_no" >
+			SELECT
+			BOARD_SEQ.NEXTVAL 
+			FROM DUAL
+		</selectKey>
+		INSERT INTO BOARD(
+			BOARD_NO,
+			BOARD_TITLE,
+			BOARD_GUBUN,
+			BOARD_CONTENT,
+			BOARD_WRITER,
+			BOARD_GROUP
+		)VALUES(
+			#board_no#,
+			#board_title#,
+			#board_gubun#,
+			#board_content#,
+			#board_writer#,
+			#board_no#
+		)
+		
+	</insert>
+	
+	<insert id="insertFileInfo" parameterClass="fileitemVO">
+		<selectKey keyProperty="file_no">
+			SELECT FILE_SEQ.NEXTVAL
+			FROM DUAL
+		</selectKey>
+		INSERT INTO FILE_ITEM
+		(
+			FILE_NO
+			,FILE_BOARD_NO
+			,FILE_NAME
+			,FILE_SAVE_NAME
+			,FILE_CONTENT_TYPE
+			,FILE_SIZE
+		)VALUES(
+			#file_no#
+			,#file_board_no#
+			,#file_name#
+			,#file_save_name#
+			,#file_content_type#
+			,#file_size#
+		)
+	</insert>
+	
+	<delete id="deleteFileInfo" parameterClass="map">
+		DELETE FROM FILE_ITEM
+		WHERE  FILE_BOARD_NO = #board_no#
+	</delete>
+	
+	<delete id="deleteBoardInfo" parameterClass="map">
+		DELETE FROM BOARD
+		WHERE  BOARD_NO = #board_no#
+	</delete>
+	
+	<select id="replyList" resultClass="replyVO" parameterClass="map">
+		SELECT B.*
+		FROM(
+		SELECT ROWNUM rnum, A.*
+		FROM(<include refid="replyselectAll"/>			
+				<dynamic>
+					<isNotEmpty property="board_no" open="AND">
+						REPLY_BOARD_NO = #board_no#
+					</isNotEmpty>
+				</dynamic>
+			ORDER BY REPLY_GROUP, REPLY_SEQ DESC			
+			) A	) B
+		WHERE 1 = 1
+		ORDER BY B.rnum desc
+	</select>
+	
+	<insert id="insertCommentInfo" parameterClass="replyVO">
+		<selectKey keyProperty="reply_no" resultClass="string">
+			SELECT REPLY_SEQ.NEXTVAL FROM DUAL
+		</selectKey>	
+		INSERT INTO REPLY (
+			 REPLY_NO
+		   , REPLY_BOARD_NO
+		   , REPLY_CONTENT
+		   , REPLY_WRITER
+		   , REPLY_GROUP
+		) VALUES (
+	 		 #reply_no#
+		   , #reply_board_no#
+		   , #reply_content#
+		   , #reply_writer#
+		   , #reply_no#
+		)		
+	</insert>	
+	
+	<insert id="insertReplyInfo" parameterClass="replyVO">
+		<selectKey keyProperty="reply_no" resultClass="string">
+			SELECT REPLY_SEQ.NEXTVAL FROM DUAL
+		</selectKey>	
+		INSERT INTO REPLY(
+	 		 REPLY_NO
+		   , REPLY_BOARD_NO
+		   , REPLY_CONTENT
+		   , REPLY_WRITER
+		   , REPLY_GROUP
+		   , REPLY_DEPTH
+		   , REPLY_SEQ				
+		)VALUES(
+	 		 #reply_no#
+		   , #reply_board_no#
+		   , #reply_content#
+		   , #reply_writer#
+		   , #reply_group#					
+		   , #reply_depth#					
+		   , #reply_seq#					
+		)		
+	</insert>	
+	
+	<select id="incrementReplySeq" parameterClass="replyVO" resultClass="string">
+		 SELECT MAX(REPLY_SEQ) + 1
+		 FROM REPLY
+		 WHERE REPLY_GROUP = #reply_group# 
+	</select>
+	
+	<update id="updateReplySeq" parameterClass="replyVO">
+		UPDATE REPLY
+		SET REPLY_SEQ = REPLY_SEQ + 1
+		WHERE REPLY_GROUP = #reply_group#
+		<![CDATA[
+			AND REPLY_SEQ > #reply_seq#
+		]]>
+	</update>
+	
+	<delete id="deleteReplyInfo" parameterClass="map">
+		DELETE FROM REPLY
+		WHERE 1 = 1
+		<dynamic>
+			<isNotEmpty property="reply_no" prepend="AND">
+				REPLY_NO = #reply_no#
+			</isNotEmpty>
+			<isNotEmpty property="reply_group" prepend="AND">
+				REPLY_GROUP = #reply_group#
+			</isNotEmpty>
+			<isNotEmpty property="board_no" prepend="AND">
+				REPLY_BOARD_NO = #board_no#
+			</isNotEmpty>
+		</dynamic>
+	</delete>
+
+	
+	<select id="fileInfo" parameterClass="map" resultClass="fileitemVO">
+		SELECT *
+		FROM FILE_ITEM
+		WHERE FILE_BOARD_NO = #board_no#
+	</select>
+	
+	<update id="updateFileDownHit" parameterClass="string">
+		UPDATE FILE_ITEM
+		   SET FILE_DOWN_HIT = FILE_DOWN_HIT + 1
+		 WHERE FILE_NO = #file_no#
+	</update>
+	
+	
+	
+	
+	
+	
+</sqlMap>

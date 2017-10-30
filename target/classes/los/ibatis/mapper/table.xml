@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="MVC">
+	<typeAlias alias="dbVO" type="los.vo.DBVO" />
+	<typeAlias alias="userTableVO" type="los.vo.UserTableVO"/>
+	<typeAlias alias="genVO" type="los.vo.GenVO" />
+
+
+	<sql id="selectAll">
+		SELECT *
+		FROM PR_DB_INFO
+		WHERE 1 = 1
+	</sql>
+
+	<select id="userInfo" parameterClass="Map" resultClass="dbVO">
+		SELECT * FROM
+		PR_DB_INFO
+		WHERE PR_NO = #pr_no#
+	</select>
+
+	<select id="tableList" resultClass="userTableVO">
+		SELECT TABLE_NAME FROM TABS
+	</select>
+
+	<select id="tableColumnsInfo" resultClass="userTableVO"
+		parameterClass="Map">
+		SELECT COLUMN_NAME
+		FROM USER_TAB_COLUMNS
+		WHERE 1= 1
+		<dynamic>
+			<isNotEmpty property="table_name" open="AND">
+				TABLE_NAME=#table_name#
+			</isNotEmpty>
+
+		</dynamic>
+	</select>
+
+	<!-- load columnList -->
+	<select id="loadColumnList" parameterClass="String" resultClass="userTableVO">
+		$colList$
+	</select>
+
+	<!-- load TableList -->
+	<select id="pkTableList" parameterClass="Map" resultClass="userTableVO">
+		<!-- SELECT DISTINCT
+		A.OWNER,
+		A.TABLE_NAME,
+		A.CONSTRAINT_NAME,
+		B.COLUMN_NAME,
+		C.DATA_TYPE
+		FROM (SELECT *
+		FROM USER_CONSTRAINTS
+		WHERE CONSTRAINT_TYPE = 'P') A,
+		USER_CONS_COLUMNS B,
+		USER_TAB_COLUMNS C
+		WHERE A.CONSTRAINT_NAME LIKE 'PK%'
+		AND A.OWNER = B.OWNER
+		AND A.TABLE_NAME = C.TABLE_NAME
+		AND A.CONSTRAINT_NAME = B.CONSTRAINT_NAME
+		AND B.COLUMN_NAME = C.COLUMN_NAME
+		AND C.DATA_TYPE = '$tableList$' -->
+			SELECT DISTINCT
+	       		A.TABLE_NAME,
+	       		A.COLUMN_NAME
+			FROM (SELECT B.TABLE_NAME,
+            			 B.COLUMN_NAME
+        	FROM (SELECT *
+            	  FROM USER_CONSTRAINTS
+            	  WHERE CONSTRAINT_TYPE = 'P'
+                  AND CONSTRAINT_NAME LIKE 'PK%') A, 
+                  (SELECT *
+            	  FROM USER_CONS_COLUMNS 
+                  WHERE CONSTRAINT_NAME LIKE 'PK%') B
+       		WHERE A.CONSTRAINT_NAME = B.CONSTRAINT_NAME
+         	AND A.TABLE_NAME = B.TABLE_NAME ) A, 
+         		(SELECT *
+            	FROM USER_TAB_COLUMNS
+            	WHERE 1=1
+     		<dynamic>
+     			<isNotEmpty property="data_type" open="AND">
+	            	DATA_TYPE = #data_type#
+            	</isNotEmpty>
+            	<isNotEmpty property="data_length" open="AND">
+	            	DATA_LENGTH = #data_length#
+	            </isNotEmpty>
+	            <isNotEmpty property="table_name" open="AND">
+	            	TABLE_NAME = #table_name#
+	            </isNotEmpty>	
+     		</dynamic>       	
+            	) B
+ 			WHERE A.TABLE_NAME = B.TABLE_NAME
+	</select>
+
+
+	<!-- new table -->
+	<insert id="createTable" parameterClass="String">
+		$tableList$
+	</insert>
+
+
+
+	<insert id="genInfo" parameterClass="genVO">
+		<selectKey keyProperty="pr_gen_no" >
+			SELECT
+			PR_GEN_SEQ.NEXTVAL 
+			FROM DUAL
+		</selectKey>
+		INSERT INTO PR_GEN_INFO(
+		PR_NO
+		,PR_TBL_NM
+		,PR_GEN_NO
+		<dynamic>
+			<isNotEmpty property="pr_ctr_yn" open=",">
+				PR_CTR_YN
+			</isNotEmpty>
+			<isNotEmpty property="pr_svc_yn" open=",">
+				PR_SVC_YN
+			</isNotEmpty>
+			<isNotEmpty property="pr_dao_yn" open=",">
+				PR_DAO_YN
+			</isNotEmpty>
+			<isNotEmpty property="pr_xml_yn" open=",">
+				PR_XML_YN
+			</isNotEmpty>
+			<isNotEmpty property="pr_vo_yn" open=",">
+				PR_VO_YN
+			</isNotEmpty>
+		</dynamic>
+
+		)VALUES(
+		#pr_no#
+		,#pr_tbl_nm#
+		,#pr_gen_no#
+		<dynamic>
+			<isNotEmpty property="pr_ctr_yn" open=",">
+				#pr_ctr_yn#
+			</isNotEmpty>
+			<isNotEmpty property="pr_svc_yn" open=",">
+				#pr_svc_yn#
+			</isNotEmpty>
+			<isNotEmpty property="pr_dao_yn" open=",">
+				#pr_dao_yn#
+			</isNotEmpty>
+			<isNotEmpty property="pr_xml_yn" open=",">
+				#pr_xml_yn#
+			</isNotEmpty>
+			<isNotEmpty property="pr_vo_yn" open=",">
+				#pr_vo_yn#
+			</isNotEmpty>
+		</dynamic>
+		)
+	</insert>
+	
+	<select id="genFileCreate" parameterClass="map" resultClass="genVO">
+		SELECT PR_NO
+			  ,PR_TBL_NM
+		      ,PR_GEN_NO
+			  ,PR_CTR_YN
+			  ,PR_SVC_YN
+			  ,PR_DAO_YN
+			  ,PR_XML_YN
+			  ,PR_VO_YN
+		FROM PR_GEN_INFO
+		WHERE 1=1
+		AND PR_NO = #pr_no#
+	</select>
+
+
+</sqlMap>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+package ${packageName}.${methodName}.service;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+
+import ${packageName}.${bizName}VO;
+
+public interface I${bizName}Service {
+	public ${bizName}VO get${bizName}Info(Map<String, String> params) throws SQLException;
+	public List<${bizName}VO> get${bizName}List() throws SQLException;
+	public int insert${bizName}Info(${bizName}VO ${methodName}Info) throws SQLException;
+	public int update${bizName}Info(${bizName}VO ${methodName}Info) throws SQLException;
+	public int delete${bizName}Info(Map<String, String> params) throws SQLException;
+}
+
