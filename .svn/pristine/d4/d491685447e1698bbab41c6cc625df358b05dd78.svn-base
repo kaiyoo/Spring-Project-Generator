@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace = "MVC">
+	<typeAlias alias="tableVO" type="los.vo.MVCTableVO"/>
+	<typeAlias alias="userVO" type="los.vo.UserTableVO"/>
+	
+	
+	
+	<sql id="selectAll">
+		SELECT * 
+		FROM PR_DB_INFO
+		WHERE 1 = 1
+	</sql>
+	
+	<select id="userInfo" parameterClass="map" resultClass="userVO" >
+		SELECT * FROM PR_DB_INFO
+	</select>
+	
+	<select id="tableList" parameterClass="map" resultClass="tableVO">
+		SELECT * FROM TABS
+	</select>
+	
+	<select id="tableInfo" resultClass="tableVO" parameterClass="map">
+<!-- 		<include refid="selectAll"/> -->
+<!-- 			<dynamic> -->
+<!-- 				<isNotEmpty property="pr_no" open="AND"> -->
+<!-- 					PR_NO=#pr_no# -->
+<!-- 				</isNotEmpty> -->
+<!-- 			</dynamic> -->
+		SELECT * FROM TABS
+	</select>
+	
+	
+</sqlMap>

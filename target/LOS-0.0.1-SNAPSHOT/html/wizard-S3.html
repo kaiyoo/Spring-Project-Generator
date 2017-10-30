@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Home | Corlate</title>
+
+<!-- core CSS -->
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/font-awesome.min.css" rel="stylesheet">
+<link href="../css/animate.min.css" rel="stylesheet">
+<link href="../css/prettyPhoto.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+<link href="../css/responsive.css" rel="stylesheet">
+<!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+<link rel="shortcut icon" href="../images/ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="../images/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="../images/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="../images/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed"
+	href="../images/ico/apple-touch-icon-57-precomposed.png">
+<link rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700'
+	rel='stylesheet' type='text/css'>
+</head>
+<!--/head-->
+<body>
+	<header id="header">
+		<nav class="navbar navbar-inverse" role="banner">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html"><img
+						src="../images/logo.png" alt="logo"></a>
+				</div>
+				<div class="collapse navbar-collapse navbar-right">
+					<ul class="nav navbar-nav">
+						<li><a href="wizard.html">Wizard</a></li>
+						<li><a href="management.html">Management</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">Community <i class="fa fa-angle-down"></i></a>
+							<ul class="dropdown-menu">
+								<li><a href="board.html">Board</a></li>
+								<li><a href="notice.html">Notice</a></li>
+								<li><a href="qna.html">QnA</a></li>
+								<li><a href="archive.html">Archive</a></li>
+							</ul></li>
+						<li><a href="about-us.html">About Us</a></li>
+						<li><a class="btn-slide animation animated-item-3" href="#">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+			<!--/.container-->
+		</nav>
+		<!--/nav-->
+	</header>
+	<!--/header-->
+
+	<section id="section" class="container">
+		<div class="center" style="padding-bottom: 10px">
+			<button class="btnUnselect" onclick="location.href='wizard.html'">Project</button>
+			<button class="btnUnselect" onclick="location.href='wizard-M1.html'">Maven</button>
+			<button class="btnSelect" onclick="location.href='wizard-S1.html'">Spring</button>
+			<button class="btnUnselect" onclick="location.href='wizard-V1.html'">MVC</button>
+		</div>
+		<form class="form-horizontal well bs-component minScreen">
+			<form>
+				<fieldset>
+					<div>
+						<form>
+							<table width="100%" class="wizard"
+								style="overflow: auto; min-width: 300px;">
+								<tr>
+									<th class="padding" colspan="2"
+										style="vertical-align: top; padding: 20px; width: 5%;">
+										<table>
+											<tr>
+												<td>
+													<button onclick="location.href='wizard-S1.html'"
+														class="springNavUn">web.xml</button>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<button onclick="location.href='wizard-S2.html'"
+														class="springNavUn">web.xml Preview</button>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<button onclick="location.href='wizard-S3.html'"
+														class="springNav">Spring Conf</button>
+												</td>
+											</tr>
+										</table>
+									</th>
+
+									<td style="width: 45%;">
+										<table>
+											<tr>
+												<th class="pad5 right"
+													style="padding-bottom: 15px; width: 143px;"><a
+													class="action-button blue magin5"> File </a></th>
+												<td colspan="2" class="w200">
+													<section>
+														<input id="file" type="checkbox" class="invisible">
+														<label for="file" class="side-label">&nbsp</label>
+													</section>
+												</td>
+											</tr>
+											<tr>
+												<th class="pad5 right" style="padding-bottom: 15px;"><a
+													class="action-button blue magin5"> Quartz </a></th>
+												<td colspan="2" class="w200">
+													<section>
+														<input id="quartz" type="checkbox" class="invisible">
+														<label for="quartz" class="side-label">&nbsp</label>
+													</section>
+												</td>
+											</tr>
+											<tr>
+												<th class="pad5 right"><a
+													class="action-button blue magin5"> iBatis </a></th>
+												<td style="width: 70px;">
+													<section>
+														<input id="friend" name="how" type="radio"> <label
+															for="friend" class="side-label">JNDI</label>
+													</section>
+												</td>
+												<td style="width: 70px; padding-left: 10px">
+													<section>
+														<input id="internet" name="how" type="radio">
+														<label for="internet" class="side-label">DBCP</label>
+													</section>
+												</td>
+											</tr>
+											<tr>
+												<th class="pad5 right" style="padding-bottom: 15px;"><a
+													class="action-button blue magin5"> Auto Commit </a></th>
+												<td colspan="2" class="w200">
+													<section>
+														<input id="commit" type="checkbox" class="invisible">
+														<label for="commit" class="side-label">&nbsp</label>
+													</section>
+												</td>
+											</tr>
+										</table>
+									</td>
+									<td style="width: 50%;">
+										<table>
+											<tr>
+											<tr>
+												<td colspan="3">
+													<section class="well2" style="width: 400px;">
+														<input id="how-other" type="radio"> <label
+															for="how-other" class="side-label">set time
+															schedule</label>
+														<!-- set time schedule Box -->
+														<div class="how-other-disclosure">
+															<table>
+																<tr>
+																	<td class="padding14"><a class="new2">minutes</a>
+																		<a class="new2">hourly</a> <a class="new2">daily</a> <br />
+																		<a class="new2">weekly</a> <a class="new2">monthly</a>
+																		<a class="new2">yearly</a></td>
+																</tr>
+																<tr>
+																	<td class="padding14">Every <input
+																		style="width: 70px;" class="i_text" type="text" />
+																	</td>
+																</tr>
+																<tr>
+																	<td class="padding14">start time <select
+																		style="width: 45px;">
+																			<option value="search-all">12</option>
+																			<option value="search-title">11</option>
+																	</select> <select style="width: 45px;">
+																			<option value="search-all">00</option>
+																			<option value="search-title">30</option>
+																	</select>
+																	</td>
+																</tr>
+																<tr>
+																	<td class="padding14">Enter your cron expression <input
+																		style="width: 100px;" class="i_text" type="text" />
+																	</td>
+																</tr>
+																
+															</table>
+															<tr>
+												<th class="pad5 right" style="padding-bottom: 15px;"><a
+													class="action-button blue magin5"> View Resolver </a></th>
+												<td colspan="2" class="">
+													<section>
+														<section>
+															<input id="viewReolver" name="viewResolver" type="radio">
+															<label for="viewReolver" class="side-label2">Internal
+																Resource View Resolver</label> <input id="tile"
+																name="viewResolver" type="radio"> <label
+																for="tile" class="side-label2">Tiles</label>
+														</section>
+													</section>
+												</td>
+											</tr>
+														</div>
+													</section>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr>
+									<td class="next" colspan="4" style="text-align: left">
+										<button class="btnLeft" onclick="location.href='wizard.html'"></button>
+									</td>
+									<td class="next" style="text-align: right">
+										<button class="btnRight"
+											onclick="location.href='wizard-S2.html'"></button>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</fieldset>
+			</form>
+		</form>
+	</section>
+	<!--/#bottom-->
+
+	<footer id="footer" class="midnight-blue">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					&copy; 2013 <a target="_blank" href="http://shapebootstrap.net/"
+						title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>.
+					All Rights Reserved.
+				</div>
+				<div class="col-sm-6">
+					<ul class="pull-right">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">About Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--/#footer-->
+
+	<script src="../js/bootstrap/jquery.js"></script>
+	<script src="../js/bootstrap/bootstrap.min.js"></script>
+	<script src="../js/bootstrap/jquery.prettyPhoto.js"></script>
+	<script src="../js/bootstrap/jquery.isotope.min.js"></script>
+	<script src="../js/bootstrap/main.js"></script>
+	<script src="../js/bootstrap/wow.min.js"></script>
+</body>
+</html>

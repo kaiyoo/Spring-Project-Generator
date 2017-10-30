@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faceted-project>
+  <runtime name="Apache Tomcat v7.0"/>
+  <fixed facet="jst.web"/>
+  <fixed facet="wst.jsdt.web"/>
+  <fixed facet="java"/>
+  <installed facet="java" version="1.7"/>
+  <installed facet="jst.web" version="3.0"/>
+  <installed facet="wst.jsdt.web" version="1.0"/>
+</faceted-project>
+
+
+ #*
+ * 1. 패키지명 :  project
+ * 2. 타입명 : org.eclipse.wst.common.project.facet.core.xml     파일
+ * 3. 작성일 : 2015. 12.02
+ * 4. 작성자 : "정석준"
+ * 5. 설명 :   org.eclipse.wst.common.project.facet.core.xml 설정 파일
+ *#

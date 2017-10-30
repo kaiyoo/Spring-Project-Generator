@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace = "PR_LIBS_INFO">
+	<typeAlias alias="libsVO" type="los.vo.LibsVO"/>
+	
+	<sql id="selectAll">
+		SELECT * 
+		FROM PR_LIBS_INFO
+		WHERE 1 = 1
+	</sql>
+	
+	<select id="jarList" parameterClass="map" resultClass="libsVO">
+		<include refid="selectAll"/>
+		<dynamic>
+			<isNotEmpty property="pr_no" open="AND">
+				PR_NO = #pr_no#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<insert id="insertJarInfo" parameterClass="libsVO">
+		<selectKey keyProperty="pr_libs_no" >
+			SELECT
+			PR_LIBS_SEQ.NEXTVAL 
+			FROM DUAL
+		</selectKey>
+		INSERT INTO PR_LIBS_INFO(
+			 		PR_LIBS_NO
+					,PR_NO
+					,PR_GRP_ID
+					,PR_ARFT_ID
+					,PR_VERSION
+					,PR_PROP_YN
+			)VALUES(
+					 #pr_libs_no#
+					,#pr_no#
+					,#pr_grp_id#
+					,#pr_arft_id#
+					,#pr_version#
+					,#pr_prop_yn#
+			)
+		
+	</insert>
+	
+	<delete id="deleteJarInfo" parameterClass="map">
+		DELETE FROM PR_LIBS_INFO
+		WHERE  PR_NO = #pr_no#
+	</delete>
+	
+	
+	
+</sqlMap>

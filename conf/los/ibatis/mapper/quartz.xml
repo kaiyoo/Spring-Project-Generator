@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace = "quartz">
+	<typeAlias alias="quartzVO" type="los.vo.QuartzVO"/>
+	
+	<sql id="selectAll">
+		SELECT * 
+		FROM PR_QUARTZ_INFO
+		WHERE 1=1
+	</sql>
+
+
+	<select id="quartzInfo" resultClass="quartzVO" parameterClass="string">
+		<include refid="selectAll"/>
+		AND PR_NO=#pr_no#
+	</select>
+
+
+	<insert id="insertQuartzInfo" parameterClass="quartzVO">
+		<selectKey keyProperty="pr_quar_no" >
+			SELECT
+			PR_QUAR_SEQ.NEXTVAL 
+			FROM DUAL
+		</selectKey>
+		INSERT INTO PR_QUARTZ_INFO(
+			PR_NO,
+			PR_QUAR_NO,
+			PR_QUAR_CLS_NM,
+			PR_QUAR_CLS_PATH,
+			PR_QUAR_EXPSN  
+			) VALUES (
+			#pr_no#,
+			#pr_quar_no#,
+			#pr_quar_cls_nm#,
+			#pr_quar_cls_path#,
+			#pr_quar_expsn#)
+	</insert>
+	
+	
+	<update id="updateQuartzInfo" parameterClass="quartzVO">
+		UPDATE PR_QUARTZ_INFO
+		SET PR_QUAR_CLS_NM 	= #pr_quar_cls_nm#,
+			PR_QUAR_CLS_PATH = #pr_quar_cls_path#,
+			PR_QUAR_EXPSN = #pr_quar_expsn#
+		WHERE PR_NO=#pr_no#
+	</update>
+	
+	<delete id="deleteQuartzInfo" parameterClass="string">
+		DELETE FROM PR_QUARTZ_INFO
+		WHERE PR_NO=#pr_no#
+	</delete>	
+	
+</sqlMap>

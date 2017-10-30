@@ -1,0 +1,15 @@
+<화면정의서>
+1. index.html : main화면, 로그인, 로그아웃
+2. wizard.html : 위자드단의 프로젝트 생성화면, 프로젝트 네임, 페이스 패키지, 그룹아이디 입력
+                  윗단의 화살표(Project,Maven,Spring,MVC)로 다른 페이지로 넘어갈 수 있으며 밑단의 화살표로 이전페이지로 이동 제공
+3. wizard-M1.html : Maven 설정 첫페이지, 레파지토리 기존 아이디 선택 또는 새로운 아이디 생성, 레파지토리 URL, Release-enabled, Snapshots enabled 추가생성
+4. wizard-M2.html : Maven 설정 두번째 페이지, 서치단에 사용자가 검색을 통해 jar를 찾거나 즐겨찾기 버튼을 클릭해서 각 dependency의 버전 선택 후 ADD버튼으로 dependency 설정, 설정된 dependency는
+					'your jar-file List'에서 체크되어 표시, dependency 삭제를 원할 때는 'REMOVE'를 선택.
+5. wizard-S1.html : Spring 설정 첫번째 페이지, 왼측의 nav를 통해 다른 Spring설정 페이지로 이동이 가능, web.xml의 폴더이름, 파일이름, expansion, encoding type, session time등을 설정, 
+					프로젝트 익스플로러를 사용하여 실시간으로 추가된 폴더와 파일을 보여줌.
+6. wizard-S2.html : Spring 설정 두번째 페이지, 왼측의 nav를 통해 다른 Spring설정 페이지로 이동이 가능, 사용자의 설정에 따른 web.xml 코드를 미리 보여준다.
+7. wizard-S3.html : Spring 설정 세번째 페이지, (페이지 재정렬 필요!! ㅠㅠ) spring conf 설정 페이지, 파일과 쿼츠, iBatis 자동 커밋, view resolver, 타임스케줄 설정
+8. wizard-V1.html : MVC 설정 첫번째 페이지, 사용자의 db정보 입력후 사용자의 테이블 정보를 이용해 dao, service, controller, xml, vo 생성 제공, 'NEW TABLE'버튼을 클릭하면 새로운 테이블을 생성하여 작업을 진행할 수 있음.
+					'COMPLETE' 버튼 클릭후 SPRING파일 생성 완료
+9. wizard-V1.html : MVC 설정 두번째 페이지, 이전 페이지에서 사용자가 선택한 파일 생성 재확인.
+10. about-us.html : 우리들에 대한 정보 페이지

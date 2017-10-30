@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<settings useStatementNamespaces="true" />	
+	<sqlMap resource="los/ibatis/mapper/member.xml"/>	
+	<sqlMap resource="los/ibatis/mapper/board.xml"/>
+	<sqlMap resource="los/ibatis/mapper/table.xml"/>
+	<sqlMap resource="los/ibatis/mapper/project.xml"/>
+	<sqlMap resource="los/ibatis/mapper/mav.xml"/>
+	<sqlMap resource="los/ibatis/mapper/ibatis.xml"/>
+	<sqlMap resource="los/ibatis/mapper/quartz.xml"/>
+	<sqlMap resource="los/ibatis/mapper/viewResolver.xml"/>
+	<sqlMap resource="los/ibatis/mapper/libs.xml"/>
+	<sqlMap resource="los/ibatis/mapper/webXML.xml"/>
+	<sqlMap resource="los/ibatis/mapper/group.xml"/>
+</sqlMapConfig>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.6.1.201408250730-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+	</configs>
+	<autoconfigs>
+		<config>WebContent/WEB-INF/servletContext/servlet-transaction.xml</config>
+		<config>WebContent/WEB-INF/rootContext/application-viewresolver.xml</config>
+		<config>WebContent/WEB-INF/rootContext/application-quartz.xml</config>
+		<config>WebContent/WEB-INF/rootContext/application-main.xml</config>
+		<config>WebContent/WEB-INF/rootContext/application-tiles.xml</config>
+		<config>WebContent/WEB-INF/rootContext/application-file.xml</config>
+		<config>WebContent/WEB-INF/rootContext/application-intercept.xml</config>
+		<config>WebContent/WEB-INF/servletContext/servlet-dodispatcher.xml</config>
+		<config>WebContent/WEB-INF/rootContext/application-ibatis.xml</config>
+	</autoconfigs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>

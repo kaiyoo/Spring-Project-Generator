@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace = "project">
+	<typeAlias alias="projectVO" type="los.vo.ProjectVO"/>
+
+
+	<select id="projectInfo" parameterClass="Map" resultClass="projectVO">
+		SELECT *
+		FROM PR_MASTER
+		<dynamic prepend="WHERE">
+			<isNotEmpty property="pr_no" >
+				PR_NO  =  #pr_no#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<insert id="insertProjectInfo" parameterClass="projectVO">
+		<selectKey keyProperty="pr_no" resultClass="string">
+			SELECT PR_SEQ.NEXTVAL
+			FROM DUAL
+		</selectKey>	
+		INSERT INTO PR_MASTER
+		(
+			  PR_NO
+			, PR_NAME
+			, PR_PKG_NM
+			, PR_GRP_NO
+		)VALUES(
+			  #pr_no#
+			, #pr_name#
+			, #pr_pkg_nm#
+			, #pr_grp_no#
+		)
+	</insert>
+	
+	<update id="updateProjectInfo" parameterClass="projectVO">
+		UPDATE PR_MASTER SET
+			PR_NAME = #pr_name# ,
+			PR_PKG_NM = #pr_pkg_nm#  
+	    WHERE 
+	    	PR_NO = #pr_no#			
+	</update>	
+
+</sqlMap>

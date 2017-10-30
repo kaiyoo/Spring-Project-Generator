@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Home | Corlate</title>
+
+<!-- core CSS -->
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/font-awesome.min.css" rel="stylesheet">
+<link href="../css/animate.min.css" rel="stylesheet">
+<link href="../css/prettyPhoto.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+<link href="../css/responsive.css" rel="stylesheet">
+<!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+<link rel="shortcut icon" href="../images/ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="../images/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="../images/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="../images/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed"
+	href="../images/ico/apple-touch-icon-57-precomposed.png">
+<link rel="stylesheet"
+	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700'
+	rel='stylesheet' type='text/css'>
+</head>
+<!--/head-->
+<body>
+	<header id="header">
+		<nav class="navbar navbar-inverse" role="banner">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html"><img
+						src="../images/logo.png" alt="logo"></a>
+				</div>
+				<div class="collapse navbar-collapse navbar-right">
+					<ul class="nav navbar-nav">
+						<li><a href="wizard.html">Wizard</a></li>
+						<li><a href="management.html">Management</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">Community <i class="fa fa-angle-down"></i></a>
+							<ul class="dropdown-menu">
+								<li><a href="board.html">Board</a></li>
+								<li><a href="notice.html">Notice</a></li>
+								<li><a href="qna.html">QnA</a></li>
+								<li><a href="archive.html">Archive</a></li>
+							</ul></li>
+						<li><a href="about-us.html">About Us</a></li>
+						<li><a class="btn-slide animation animated-item-3" href="#">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+			<!--/.container-->
+		</nav>
+		<!--/nav-->
+	</header>
+	<!--/header-->
+
+	<section id="section" class="container">
+		<div class="center" style="padding-bottom: 10px">
+			<button class="btnUnselect" onclick="location.href='wizard.html'">Project</button>
+			<button class="btnUnselect" onclick="location.href='wizard-M1.html'">Maven</button>
+			<button class="btnUnselect" onclick="location.href='wizard-S1.html'">Spring</button>
+			<button class="btnSelect" onclick="location.href='wizard-V1.html'">MVC</button>
+		</div>
+		<form class="form-horizontal well bs-component minScreen">
+			<form>
+				<fieldset>
+					<div>
+						<form>
+							<table width="100%" class="wizard"
+								style="overflow: auto; min-width: 300px;">
+								<tr>
+									<th colspan="3" style="padding: 50px;width: 100%;" class="left">* Table List
+										<table class="well2 center">
+											<tr style="background-color: rgba(167, 39, 115, 0.66);">
+												<th style="width: 350px">Table Name</th>
+												<td style="width: 300px">Dao</td>
+												<td style="width: 300px">Service</td>
+												<td style="width: 300px">Controller</td>
+												<td style="width: 300px">Xml</td>
+												<td style="width: 300px">Vo</td>
+												<td style="width: 300px">All</td>
+											</tr>
+											<tr>
+												<th>MEMBER</th>
+												<td>
+													<section>
+														<input id="dao" type="checkbox">
+													</section>
+												</td>
+												<td>
+													<section>
+														<input id="service" type="checkbox">
+													</section>
+												</td>
+												<td>
+													<section>
+														<input id="controller" type="checkbox">
+													</section>
+												</td>
+												<td>
+													<section>
+														<input id="xml" type="checkbox">
+													</section>
+												</td>
+												<td>
+													<section>
+														<input id="vo" type="checkbox">
+													</section>
+												</td>
+												<td>
+													<section>
+														<input id="all" type="checkbox">
+													</section>
+												</td>
+											</tr>
+											<tr>
+												<th>BUYER</th>
+												<td>
+													<section>
+														<input id="dao-b" type="checkbox">
+													</section>
+												</td>
+												<td>
+													<section>
+														<input id="service-b" type="checkbox">
+													</section>
+												</td>
+												<td>
+													<section>
+														<input id="controller-b" type="checkbox">
+													</section>
+												</td>
+												<td>
+													<section>
+														<input id="xml-b" type="checkbox">
+													</section>
+												</td>
+												<td>
+													<section>
+														<input id="vo-b" type="checkbox">
+													</section>
+												</td>
+												<td>
+													<section>
+														<input id="all-b" type="checkbox">
+													</section>
+												</td>
+											</tr>
+										</table>
+									</th>
+									</tr>
+									<tr>
+										<td colspan="2" class="padding left"
+																style="height: 100%; padding-bottom: 20px; padding-left: 100px;">
+											<button class="new"
+											style="width: 100px; height: 30px; font-size: 15px"
+											data-target="#layerpop" data-toggle="modal">NEW
+											TABLE</button>
+										<div class="modal fade" id="layerpop">
+																	<div class="modal-dialog">
+																		<div class="modal-content gradient"
+																			style="width: 600px">
+																			<div class="modal-header"
+																				style="border-bottom: none; height: 50px;">
+																				<!-- 닫기(x) 버튼 -->
+																				<button type="button" class="close"
+																					data-dismiss="modal">×</button>
+																				<!-- header title -->
+																			</div>
+																			<!-- body -->
+																			<div class="modal-body well2" style="margin: 15px">
+																				<table>
+																					<tr>
+																						<th
+																							style="text-align: right; font-size: 20px; padding-right: 10px">
+																							NEW TABLE</th>
+																						<td style="text-align: left;"><input
+																							type="text" /></td>
+																					</tr>
+																					<tr>
+																						<td colspan="2">
+																							<table style="border: 1px white solid;">
+																								<tr
+																									style="text-align: center; background-color: rgba(255, 255, 255, 0.68); color: #4e5d6c; font-size: 15px;">
+																									<th>Column Name</th>
+																									<th>Data Type</th>
+																									<th>Primary Key</th>
+																									<th>Foreign Key</th>
+																								</tr>
+																								<tr
+																									style="text-align: center; border: 1px white solid;">
+																									<th>ID</th>
+																									<th><select>
+																											<option>1</option>
+																											<option>2</option>
+																									</select></th>
+																									<th><input type="checkbox"></th>
+																									<th><input type="checkbox"></th>
+																								</tr>
+																								<tr
+																									style="text-align: center; border: 1px white solid;">
+																									<th>NAME</th>
+																									<th><select>
+																											<option>1</option>
+																											<option>2</option>
+																									</select></th>
+																									<th><input type="checkbox"></th>
+																									<th><input type="checkbox"></th>
+																								</tr>
+																								<tr
+																									style="text-align: center; border: 1px white solid;">
+																									<th>AGE</th>
+																									<th><select>
+																											<option>1</option>
+																											<option>2</option>
+																									</select></th>
+																									<th><input type="checkbox"></th>
+																									<th><input type="checkbox"></th>
+																								</tr>
+																								<tr
+																									style="text-align: center; border: 1px white solid;">
+																									<th>JOB</th>
+																									<th><select>
+																											<option>1</option>
+																											<option>2</option>
+																									</select></th>
+																									<th><input type="checkbox"></th>
+																									<th><input type="checkbox"></th>
+																								</tr>
+																								<tr
+																									style="text-align: center; border: 1px white solid;">
+																									<th>HODDY</th>
+																									<th><select>
+																											<option>1</option>
+																											<option>2</option>
+																									</select></th>
+																									<th><input type="checkbox"></th>
+																									<th><input type="checkbox"></th>
+																								</tr>
+																							</table>
+																						</td>
+																					</tr>
+																					<tr>
+																						<th colspan="2" style="text-align: center;">
+																							*FK the column <input type="text"> refers
+																						</th>
+																					</tr>
+																					<tr>
+																						<th colspan="2" style="text-align: center;">
+																							to the table 
+																								<select>
+																									<option>JOBGROUP</option>
+																									<option>MEMBER</option>
+																									<option>CART</option>
+																								</select> 
+																								's 
+																								<select >
+																									<option>jobfield</option>
+																									<option>column2</option>
+																									<option>column3</option>
+																								</select>
+																						</th>
+																					</tr>
+																				</table>
+																			</div>
+																			<!-- Footer -->
+																			<div class="modal-footer"
+																				style="border-top: none; margin: 20px">
+																				<button type="button" class="btn btn-default"
+																					data-dismiss="modal" style="font-weight: bold;">DONE</button>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+										</td>
+										<td class="padding right"
+																style="height: 100%; padding-bottom: 20px;  padding-right: 100px;">
+											<button class="new"
+												style="width: 200px; height: 40px; font-size: 20px;">
+													COMPLETE
+												</button>
+										</td>
+									</tr>
+								<tr>
+									<td class="next" colspan="2" style="text-align: left">
+										<button class="btnLeft" onclick="location.href='wizard.html'"></button>
+									</td>
+									<td class="next" style="text-align: right">
+										<button class="btnRight"
+											onclick="location.href='wizard-S2.html'"></button>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</fieldset>
+			</form>
+		</form>
+	</section>
+	<!--/#bottom-->
+
+	<footer id="footer" class="midnight-blue">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					&copy; 2013 <a target="_blank" href="http://shapebootstrap.net/"
+						title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>.
+					All Rights Reserved.
+				</div>
+				<div class="col-sm-6">
+					<ul class="pull-right">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">About Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--/#footer-->
+
+	<script src="../js/bootstrap/jquery.js"></script>
+	<script src="../js/bootstrap/bootstrap.min.js"></script>
+	<script src="../js/bootstrap/jquery.prettyPhoto.js"></script>
+	<script src="../js/bootstrap/jquery.isotope.min.js"></script>
+	<script src="../js/bootstrap/main.js"></script>
+	<script src="../js/bootstrap/wow.min.js"></script>
+	<script src="../js/bootstrap/buildWave.js"></script>
+</body>
+</html>

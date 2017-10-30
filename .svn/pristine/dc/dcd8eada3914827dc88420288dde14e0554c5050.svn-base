@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>LOS</groupId>
+  <artifactId>LOS</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <properties>
+#foreach($i in $jarList)
+#if($i.pr_prop_yn == "Y")
+    <${i.pr_arft_id}.version>$i.pr_version</${i.pr_arft_id}.version>
+#end
+#end
+  </properties>
+
+  <repositories>
+                #if($repoList.size()==0)
+                    <repository>
+                        <id>admin</id>
+                        <url>http://192.168.202.130:8081/artifactory/remote-repos</url>
+                        <releases>
+                                    <enabled>true</enabled>
+                        </releases>
+                        <snapshots>
+                                    <enabled>false</enabled>
+                        </snapshots>
+                </repository>
+            #elseif ($repoList.size()!=0)
+                #foreach($i in $repoList)
+                <repository>
+  		    <id>$i.pr_mav_rep_id</id>
+  		    <url>$i.pr_mav_rep_url</url>
+  		    <releases>
+  			   <enabled>$i.pr_mav_rep_rel</enabled>
+  		    </releases>
+  		    <snapshots>
+  		    	   <enabled>$i.pr_mav_rep_snap</enabled>
+  		    </snapshots>
+  	     </repository>
+                   #end
+            #end
+  </repositories>
+
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+          <warSourceDirectory>WebContent</warSourceDirectory>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+#foreach($i in $jarList)
+#if($i.pr_prop_yn == "Y")
+	<dependency>
+		<groupId>$i.pr_grp_id</groupId>
+		<artifactId>$i.pr_arft_id</artifactId>
+		<version>${${i.pr_arft_id}.version}</version>
+	</dependency>
+#else
+	<dependency>
+		<groupId>$i.pr_grp_id</groupId>
+		<artifactId>$i.pr_arft_id</artifactId>
+		<version>$i.pr_version</version>
+	</dependency>
+#end
+#end
+  </dependencies>
+</project>

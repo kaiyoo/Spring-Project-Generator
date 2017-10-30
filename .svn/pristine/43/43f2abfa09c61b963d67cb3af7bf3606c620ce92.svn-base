@@ -1,0 +1,40 @@
+1) 이클립스 window - Preferences 
+
+2) 좌측 트리 Java - Code Style - Code Templates
+
+3) 우측 Comment 중 선택하고 Edit 버튼 누르고 편집
+
+4) 작성자 변경방법 :
+	이클립스 설치 폴더에 가서 
+	eclipse.ini 를 찾아 오픈.
+	-vmargs 를 찾아서 다음줄에 -Duser.name="홍길동"
+	
+	
+ - File
+/**
+ * 1. 프로젝트명 : ${project_name}
+ * 2. 패키지명(또는 디렉토리 경로) : ${package_name}
+ * 3. 파일명 : ${file_name}
+ * 4. 작성일 : ${date} ${time}
+ * 5. 작성자 : ${user}
+ * 6. 설명 :
+ */
+
+ - Type
+/**
+ * 1. 패키지명 : ${package_name}
+ * 2. 타입명 : ${file_name}
+ * 3. 작성일 : ${date} ${time}
+ * 4. 작성자 : ${user}
+ * 5. 설명 :
+ * ${tags}
+ */
+
+ - Methods
+/**
+ * 1. 메소드명 : ${enclosing_method}
+ * 2. 작성일 : ${date} ${time}
+ * 3. 작성자 : ${user}
+ * 4. 설명 :
+ * ${tags}
+ */

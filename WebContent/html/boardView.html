@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Blog Single | Corlate</title>
+
+<!-- core CSS -->
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/font-awesome.min.css" rel="stylesheet">
+<link href="../css/prettyPhoto.css" rel="stylesheet">
+<link href="../css/animate.min.css" rel="stylesheet">
+<link href="../css/main.css" rel="stylesheet">
+<link href="../css/responsive.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+<link rel="shortcut icon" href="images/ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144"
+	href="../images/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"
+	href="../images/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"
+	href="../images/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed"
+	href="../images/ico/apple-touch-icon-57-precomposed.png">
+</head>
+<!--/head-->
+
+<body>
+	<header id="header">
+		<nav class="navbar navbar-inverse" role="banner">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html"><img
+						src="../images/logo.png" alt="logo"></a>
+				</div>
+				<div class="collapse navbar-collapse navbar-right">
+					<ul class="nav navbar-nav">
+						<li><a href="wizard.html">Wizard</a></li>
+						<li><a href="management.html">Management</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">Community <i class="fa fa-angle-down"></i></a>
+							<ul class="dropdown-menu">
+								<li><a href="board.html">Board</a></li>
+								<li><a href="notice.html">Notice</a></li>
+								<li><a href="qna.html">QnA</a></li>
+								<li><a href="archive.html">Archive</a></li>
+							</ul></li>
+						<li><a href="about-us.html">About Us</a></li>
+						<li><a id="btn_logout"
+							class="btn-slide animation animated-item-3" href="#">Logout</a></li>
+					</ul>
+				</div>
+			</div>
+			<!--/.container-->
+		</nav>
+		<!--/nav-->
+	</header>
+	<!--/header-->
+	<section id="section" class="container">
+
+		<div class="col-xs-12 col-sm-7">
+			<div class="tab-wrap">
+				<div class="media">
+					<div class="parrent pull-left">
+						<ul class="nav nav-tabs nav-stacked">
+							<li class="active"><a href="board.html">Board</a></li>
+							<li class=""><a href="notice.html">Notice</a></li>
+							<li class=""><a href="qna.html">QnA</a></li>
+							<li class=""><a href="archive.html">Archive</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<form name="boardForm">
+			<input type="hidden" name="board_no" value="${boardInfo.board_no }">
+			<div class="col-xs-12 col-sm-99">
+				<table class="table table-striped solid">
+					<thead class="boardheader">
+						<tr class="text tileview dashed">
+							<td class="center">글 제목 &nbsp; &nbsp;|</td>
+							<td id="board_title">아 집에가고싶다~ <!--  <input  id="board_title" value="${boardInfo.board_title }">-->
+							</td>
+						</tr>
+						<tr class="text dashed">
+							<td class="center">글쓴이 &nbsp; &nbsp;|</td>
+							<td id="borad-writer">이태일</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="text">
+							<td colspan="2">
+								<div class="board_contents3" id="board_contents">
+									열대어에 빠지게 된 지 6년째라고 밝힌 태일은 데뷔전부터 열대어 동호회 활동을 이어온 것은 물론, 지방의 수입
+									열대어 경매장을 직접 찾아갈 정도로 열혈 열대어 덕후. 태일은 본격적인 덕밍아웃에 앞서 워밍업으로 '물방'이라는
+									자신의 독특한 취미공간을 '능력자들'에서 최초로 공개하였다. '물방'이란 열대어를 기르기 위해 수조로만 채워놓은
+									방을 일컫는 열대어 매니아들의 용어이다. <br> <br>수조 속 열대어들과 애정이 듬뿍 담긴
+									아이컨택은 물론, 건강상태를 꼼꼼히 챙기는 자상한 모습으로 평소 무대 위 거친 악동이미지와는 180도 다른 매력을
+									보여준 그는 다친 열대어에게 손수 연고를 발라주며 자상하게 말을 건네는 등 남다른 열대어에 대한 애정을
+									인증하였다. <br> <br>녹화당일 태일은 다른 일반인 덕후들과 마찬가지로 박스 모자를 쓴
+									채, 방청객 속에 비밀리에 앉아있어 MC들은 물론 아이돌 선배인 정용화마저 깜짝 놀라게 만들었다는 후문. 첫회
+									게스트로 참여한 씨엔블루 정용화는 태일이 보여준 열대어 능력시전에 깜짝 놀라며 소름까지 돋았다는 소감을 남기기도해
+									태일의 열대어 덕력에 더욱 기대가 모아지고 있다. <br> <br>ran613@sportschoun.com
+									<br> <br>
+									<p>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+						<tr class="text tileview dashed">
+							<td class="center">첨부 파일 &nbsp; &nbsp;|</td>
+							<td id="board_title">
+								<a href="#"></a>
+							</td>
+						</tr>
+					<tfoot class="reply">
+					<tr>
+						<td colspan="2" class="right" style="background-color: transparent;">
+							<input type="button" value="수정"class="btn_view"> 
+							<input type="button" value="삭제"class="btn_view"> 
+							<input type="reset" value="취소"class="btn_view"> 
+							<input type="button" value="답글"class="btn_view"> 
+							<input type="button" value="목록"class="btn_view">
+						</td>
+					</tr>
+						<tr class="text">
+							<form method="post" name="replyForm" method="post">
+								<input type="hidden" name="reply_board_no"
+									value="${boardInfo.board_no}" /> <input type="hidden"
+									name="reply_writer" value="${LOGIN_MEMBERINFO.mem_id}" />
+								<div class="col-xs-12 col-sm-99">
+									<table class="table table-striped replyForm">
+										<tr>
+											<td scope="col" class="center">이태일짱<!-- ${LOGIN_MEMBERINFO.mem_id} --></td>
+											<td scope="col" class="reply-content" colspan="2">리플내용
+												리플내용리플내용리플내용리플내용리플내용리플내용리플내용리플내용리플내용</td>
+										</tr>
+										<tr>
+											<td scope="col" class="center">이태일짱<!-- ${LOGIN_MEMBERINFO.mem_id} --></td>
+											<td scope="col" class="reply-content" colspan="2">리플내용
+												리플내용리플내용리플내용리플내용리플내용리플내용리플내용리플내용리플내용</td>
+										</tr>
+										<tr>
+											<td scope="col" class="center">이태일짱<!-- ${LOGIN_MEMBERINFO.mem_id} --></td>
+											<td scope="col" class="reply-content" colspan="2">리플내용
+												리플내용리플내용리플내용리플내용리플내용리플내용리플내용리플내용리플내용</td>
+										</tr>
+										<tr>
+											<td scope="col" class="center">이태일짱<!-- ${LOGIN_MEMBERINFO.mem_id} --></td>
+											<td scope="col" class="reply-content" colspan="2">리플내용
+												리플내용리플내용리플내용리플내용리플내용리플내용리플내용리플내용리플내용</td>
+										</tr>
+										<tr id="comment" >
+											<th style="padding-top:18px" scope="row" class="center">Comment</th>
+											<td><textarea id="reply_content" name="reply_content"
+													cols="50px">
+												</textarea></td>
+											<th style="padding-top:18px">
+												<input type="submit" class="btn_view" value="댓글달기" /></th>
+										</tr>
+									</table>
+								</div>
+							</form>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</form>
+	</section>
+	<!--/#bottom-->
+
+	<footer id="footer" class="midnight-blue">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6">
+					&copy; 2013 <a target="_blank" href="http://shapebootstrap.net/"
+						title="Free Twitter Bootstrap WordPress Themes and HTML templates">ShapeBootstrap</a>.
+					All Rights Reserved.
+				</div>
+				<div class="col-sm-6">
+					<ul class="pull-right">
+						<li><a href="#">Home</a></li>
+						<li><a href="#">About Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--/#footer-->
+
+	<script src="../js/bootstrap/jquery.js"></script>
+	<script src="../js/bootstrap/bootstrap.min.js"></script>
+	<script src="../js/bootstrap/jquery.prettyPhoto.js"></script>
+	<script src="../js/bootstrap/jquery.isotope.min.js"></script>
+	<script src="../js/bootstrap/main.js"></script>
+	<script src="../js/bootstrap/wow.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+package ${packageName}.controller.${methodName};
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import ${packageName}.${methodName}.service.I${bizName}Service;
+import ${packageName}.vo.${bizName}VO;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+@Controller
+@RequestMapping("/${methodName}/")
+public class ${bizName}Controller {
+	@Autowired
+	private I${bizName}Service service;
+	@Autowired
+	private HttpServletRequest request;
+	@Autowired
+	private HttpSession session;
+	
+	@RequestMapping("get${bizName}Info")
+	private ModelAndView get${bizName}Info (ModelAndView view, 
+				#foreach($pk_column in $pk_column_List)
+					@RequestParam String $pk_column
+				#end	
+					) throws SQLException{
+		
+		Map<String, String> params = new HashMap<String, String>();
+		#foreach($pk_column in $pk_column_List)
+			params.put("$pk_column", $pk_column);
+		#end
+		
+		${bizName}VO ${bizName}Info = this.service.get${bizName}Info(params);
+		
+		view.addObject("${methodName}Info", ${methodName}Info);
+		
+		return view;
+	}
+	
+	@RequestMapping("get${bizName}List")
+	private ModelAndView get${bizName} (ModelAndView view) throws SQLException{
+		
+		List<${bizName}VO> ${bizName}List = new ArrayList<${bizName}VO>();
+		
+		${bizName}List = this.service.get${bizName}List();
+		
+		view.addObject("${methodName}List", ${methodName}List);
+		
+		return view;
+	}
+	
+	@RequestMapping("insert${bizName}Info")
+	private ModelAndView insert${bizName}Info (ModelAndView view, ${bizName}VO ${methodName}Info) throws SQLException{
+	
+		this.service.insert${bizName}Info(${methodName}Info);
+				
+		return view;
+	}
+	
+	@RequestMapping("update${bizName}Info") 
+	private ModelAndView update${bizName}Info (ModelAndView view, ${bizName}VO ${methodName}Info) throws SQLException{
+		
+		this.service.update${bizName}Info(${methodName}Info);
+		
+		return view;
+	}
+	
+	
+	@RequestMapping("delete${bizName}Info")
+	private ModelAndView delete${bizName}Info (ModelAndView view, @RequestParam String ${pk_column}) throws SQLException{
+		
+		Map<String, String> params = new HashMap<String, String>();
+		#foreach($pk_column in $pk_column_List)
+			params.put("$pk_column", $pk_column);
+		#end
+		this.service.delete${bizName}Info(params);
+		
+		return view;
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+

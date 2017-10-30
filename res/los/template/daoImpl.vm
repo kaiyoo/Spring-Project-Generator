@@ -1,0 +1,52 @@
+package${packageName}.${methodName}.dao;
+
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Resource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.ibatis.SqlMapClientTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.ibatis.sqlmap.client.SqlMapClient;
+
+import ${packageName}.vo.${bizName}VO;
+
+@Repository("i${methodName}Dao")
+public class I${bizName}DaoImpl implements I${bizName}Dao {
+	@Autowired
+	private SqlMapClient client;
+	
+	@Override
+	public ${bizName}VO get${bizName}Info(Map<String, String> params)
+			throws SQLException {
+		return (${bizName}VO) this.client.queryForObject("${methodName}.${methodName}Info", params);
+	}
+
+	@Override
+	public List<${bizName}VO> get${bizName}List() throws SQLException {
+		return this.client.queryForList("${methodName}.${methodName}List");
+	}
+
+	@Override
+	public int insert${bizName}Info(${bizName}VO ${methodName}Info) throws SQLException {
+		this.client.insert("${methodName}.insert${bizName}Info", ${methodName}Info);
+		return 1;
+	}
+
+	@Override
+	public int update${bizName}Info(${bizName}VO ${methodName}Info) throws SQLException {
+		return this.client.update("${methodName}.update${bizName}Info", ${methodName}Info);
+	}
+
+	@Override
+	public int delete${bizName}Info(Map<String, String> params) throws SQLException {
+		return this.client.delete("${methodName}.delete${bizName}Info", params);
+	}
+	
+}
+
+
+
+

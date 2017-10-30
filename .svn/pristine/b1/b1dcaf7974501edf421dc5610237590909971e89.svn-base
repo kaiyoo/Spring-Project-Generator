@@ -1,0 +1,20 @@
+package ${packageName}.vo;
+
+public class ${bizName}VO {
+#foreach($i in [0..$count])
+private String $user_col.get($i);
+#end
+
+#foreach($i in [0..$count])
+public String get$user_col_up.get($i)() {
+	return $user_col.get($i);
+}	
+public void set$user_col_up.get($i)(String $user_col.get($i)) {
+	this.$user_col.get($i) = $user_col.get($i);
+}	
+#end
+	
+	
+
+}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    

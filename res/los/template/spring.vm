@@ -1,0 +1,135 @@
+#if(!$xml_tiles_def&&!$sql_xml)
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+#if($xml_ibatis)
+	xmlns:jee="http://www.springframework.org/schema/jee"
+#end
+#if($xml_properties)
+	xmlns:util="http://www.springframework.org/schema/util"
+#end
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd #if($xml_ibatis)http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd #end#if($xml_properties)http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd#end">
+
+#if($xml_file)
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		p:defaultEncoding="UTF-8"
+		p:maxUploadSize="100000000"
+		p:maxInMemorySize="100000000">
+	</bean>
+#end
+#if($xml_ibatis)
+#if($dbcp)
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close"
+		p:driverClassName="#{connectionInfo['driver']}"
+		p:url="#{connectionInfo['url']}"
+		p:username="#{connectionInfo['username']}"
+		p:password="#{connectionInfo['password']}"
+		p:maxActive="5"
+		p:maxWait="-1">
+	</bean>
+#end
+#if($jndi)
+	<jee:jndi-lookup id="dataSource" jndi-name="LordofSpring"></jee:jndi-lookup>
+#end
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean"
+		p:configLocation="classpath:los/ibatis/config/SqlMapConfig.xml"
+		p:dataSource-ref="dataSource"
+		p:useTransactionAwareDataSource="true"
+		p:transactionConfigClass="com.ibatis.sqlmap.engine.transaction.external.ExternalTransactionConfig">
+		<property name="transactionConfigProperties">
+			<props>
+				<prop key="DefaultAutoCommit">#if($autocommit)true#else false#end</prop>
+				<prop key="SetAutoCommitAllowed">true</prop>
+			</props>
+		</property>
+	</bean>
+#end
+#if($xml_properties)
+	<util:properties id="connectionInfo" location="classpath:${basePackage}/ibatis/config/SqlMapConfig.properties">
+	</util:properties>
+#end
+#if($xml_quartz)
+	<bean id="$clz_nm" class="org.springframework.scheduling.quartz.JobDetailBean"
+		p:jobClass-ref="$clz_path">
+	</bean>
+
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"
+		p:jobDetail-ref="$clz_nm"
+		p:cronExpression="#if($cron_ex)$cron_ex#end#if($user_ex)$user_ex#end">
+	</bean>
+
+	<bean id="schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger"/>
+			</list>
+		</property>
+	</bean>
+#end
+#if($xml_tiles_config)
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles/tiles-def.xml</value>
+			</list>
+		</property>
+	</bean>
+#end
+#if($xml_viewResolver)
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix=#if($prefix)"$prefix"#elseif($tilesView)"/WEB-INF/jsp/"#end
+## suffix 설정
+ p:suffix=#if($suffix)"${suffix}"#elseif($tilesView)".jsp"#end
+ p:order=#if($beanNameView&&$tilesView)"2"#elseif($tilesView&&!$beanNameView||!$tilesView&&$beanNameView)"1"#else"0"#end>
+	</bean>
+
+#if($beanNameView)
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver"
+		p:order="0">
+	</bean>
+#end
+
+#if($tilesView)
+	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"></property>
+		<property name="order" value=#if($beanNameView)"1"#else"0"#end></property>
+	</bean>
+#end
+#end
+
+</beans>
+#end
+#if($xml_tiles_def)
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+	<definition name="mainPage" template="/WEB-INF/template/templateMain.jsp">
+		<put-attribute name="title" value="Lord Of Spring"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/layout/top.jsp"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/layout/bottom.jsp"></put-attribute>
+	</definition>
+
+	<definition name="layout" template="/WEB-INF/template/template.jsp">
+		<put-attribute name="title" value="Lord Of Spring"></put-attribute>
+		<put-attribute name="header" value="/WEB-INF/layout/top.jsp"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/layout/bottom.jsp"></put-attribute>
+	</definition>
+
+	<definition name="*" extends="mainPage">
+		<put-attribute name="body" value="/WEB-INF/jsp/{1}.jsp"></put-attribute>
+	</definition>
+
+	<definition name="board/*" extends="layout">
+		<put-attribute name="left" value="/WEB-INF/layout/left.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/jsp/board/{1}.jsp"></put-attribute>
+	</definition>
+
+</tiles-definitions>
+#end
+
