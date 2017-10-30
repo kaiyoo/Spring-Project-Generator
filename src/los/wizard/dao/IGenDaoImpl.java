@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.tomcat.util.buf.UEncoder;
+//import org.apache.tomcat.util.buf.UEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -42,7 +42,7 @@ public class IGenDaoImpl implements IGenDao {
 
 	@Override
 	public List<UserTableVO> getTableList(DBVO userDBInfo) throws SQLException {
-		// 현재의 컨넥션을 유저가 전달한 컨넥션으로 변경
+		// �쁽�옱�쓽 而⑤꽖�뀡�쓣 �쑀��媛� �쟾�떖�븳 而⑤꽖�뀡�쑝濡� 蹂�寃�
 		this.connection.changeUserConnection(userDBInfo);
 		List<UserTableVO> mainTblList = new ArrayList<UserTableVO>();
 		mainTblList = this.client.queryForList("MVC.tableList", userDBInfo);
@@ -70,13 +70,13 @@ public class IGenDaoImpl implements IGenDao {
 	@Override
 	public List<UserTableVO> getCreateTableList(String tblType, DBVO userDBInfo)
 			throws SQLException {
-		System.out.println("유저계정연결");
+		System.out.println("�쑀��怨꾩젙�뿰寃�");
 		this.connection.changeUserConnection(userDBInfo);
 		
 		List<UserTableVO> tableList = new ArrayList<UserTableVO>();
 		tableList =  this.client.queryForList("MVC.pkTableList", tblType);
 		
-		System.out.println("Admin계정연결");
+		System.out.println("Admin怨꾩젙�뿰寃�");
 		this.connection.changeAdminConnection();
 		
 		return tableList;
@@ -96,13 +96,13 @@ public class IGenDaoImpl implements IGenDao {
 	@Override
 	public List<UserTableVO> loadColList(String loadColumnList, DBVO userDBInfo) throws SQLException {
 		
-		System.out.println("유저계정연결");
+		System.out.println("�쑀��怨꾩젙�뿰寃�");
 		this.connection.changeUserConnection(userDBInfo);
 		
 		List<UserTableVO> colList = new ArrayList<UserTableVO>();
 		colList = this.client.queryForList("MVC.loadColumnList", loadColumnList);
 		
-		System.out.println("Admin계정연결");
+		System.out.println("Admin怨꾩젙�뿰寃�");
 		this.connection.changeAdminConnection();
 		
 		return colList;
@@ -111,12 +111,12 @@ public class IGenDaoImpl implements IGenDao {
 
 	@Override
 	public void createTable(String tableList, DBVO userDBInfo) throws SQLException {
-		System.out.println("유저계정연결");
+		System.out.println("�쑀��怨꾩젙�뿰寃�");
 		this.connection.changeUserConnection(userDBInfo);
 		
 		this.client.insert("MVC.createTable", tableList);
 		
-		System.out.println("Admin계정연결");
+		System.out.println("Admin怨꾩젙�뿰寃�");
 		this.connection.changeAdminConnection();
 	}
 	
