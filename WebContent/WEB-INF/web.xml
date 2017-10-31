@@ -52,8 +52,8 @@
     <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
   </listener>
   <!--  Log4j 설정 파일 위치를 지정 -->
-  <context-param>
+<!--   <context-param>
     <param-name>log4jConfigLocation</param-name>
     <param-value>classpath:los/log4j/config/log4j.properties</param-value>
-  </context-param>
+  </context-param> -->
 </web-app>
