@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
 	<WatchedResource>WEB-INF/web.xml</WatchedResource>
-	<Resource name = "LordofSpring" 
+	
+<!-- commented on 31/10/17 due to lack of database instance -->
+<!-- 	<Resource name = "LordofSpring" 
 			auth = "Rod Johnson" 
 			type="javax.sql.DataSource" 
 			driverClassName="oracle.jdbc.driver.OracleDriver"
@@ -10,5 +12,5 @@
 			password ="los123"
 			maxActive ="10" 
 			maxWait="-1" >		
-	</Resource>
+	</Resource> -->
 </Context>
