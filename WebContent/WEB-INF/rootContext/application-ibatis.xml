@@ -6,6 +6,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
+<!-- Commented temporarily on 1/11/17 due to lack of database instance on Heroku	 -->
 
 <!-- 	<jee:jndi-lookup id="dataSource" jndi-name="LordofSpring"></jee:jndi-lookup>
 

@@ -15,7 +15,8 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 
 @Component
 public class DBConnection {
-//commented on 31/10/17 due to lack of database instance	
+//Commented temporarily on 1/11/17 due to lack of database instance	on Heroku	
+//Override the unimplemented method to avoid error	
 	
 /*	@Autowired
 	private SqlMapClient client;

@@ -13,7 +13,28 @@ import los.vo.ProjectVO;
 @Repository
 public class IProjectDaoImpl implements IProjectDao {
 
-	@Autowired
+//Commented temporarily on 1/11/17 due to lack of database instance	on Heroku	
+//Override the unimplemented method to avoid error	
+
+	@Override
+	public String insertProjectInfo(ProjectVO projectInfo) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ProjectVO getProjectInfo(Map<String, String> params) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateProjectInfo(ProjectVO projectInfo) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/*@Autowired
 	private SqlMapClient client;
 	
 	@Override
@@ -29,6 +50,6 @@ public class IProjectDaoImpl implements IProjectDao {
 	
 	public void updateProjectInfo(ProjectVO projectInfo) throws SQLException{
 		this.client.update("project.updateProjectInfo",projectInfo);
-	}
+	}*/
 	
 }

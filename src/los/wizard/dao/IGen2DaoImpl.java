@@ -15,7 +15,10 @@ import los.vo.UserTableVO;
 
 @Repository
 public class IGen2DaoImpl implements IGen2Dao {
-
+	
+//Commented temporarily on 1/11/17 due to lack of database instance	on Heroku	
+//Override the unimplemented method to avoid error
+	
 	@Override
 	public List<UserTableVO> getPkList(DBVO dbInfo, Map<String, String> params) throws SQLException {
 		// TODO Auto-generated method stub

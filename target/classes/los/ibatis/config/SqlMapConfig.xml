@@ -3,7 +3,9 @@
     PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
     "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
 
-<sqlMapConfig>
+<!--  Commented temporarily on 1/11/17 due to lack of database instance	on Heroku	-->
+
+<!-- <sqlMapConfig>
 	<settings useStatementNamespaces="true" />	
 	<sqlMap resource="los/ibatis/mapper/member.xml"/>	
 	<sqlMap resource="los/ibatis/mapper/board.xml"/>
@@ -16,4 +18,4 @@
 	<sqlMap resource="los/ibatis/mapper/libs.xml"/>
 	<sqlMap resource="los/ibatis/mapper/webXML.xml"/>
 	<sqlMap resource="los/ibatis/mapper/group.xml"/>
-</sqlMapConfig>
+</sqlMapConfig> -->

@@ -18,7 +18,10 @@ import los.vo.DBVO;
 
 @Repository
 public class IGenDaoImpl implements IGenDao {
-//commented on 31/10/17 due to lack of database instance
+	
+//Commented temporarily on 1/11/17 due to lack of database instance	on Heroku	
+//Override the unimplemented method to avoid error
+	
 	@Override
 	public DBVO getUserInfo(Map<String, String> params) throws SQLException {
 		// TODO Auto-generated method stub

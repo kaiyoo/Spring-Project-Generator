@@ -16,7 +16,61 @@ import los.vo.WebXMLVO;
 
 @Repository
 public class ISpringDaoImpl implements ISpringDao {
-	@Autowired
+	
+//Commented temporarily on 1/11/17 due to lack of database instance	on Heroku	
+//Override the unimplemented method to avoid error	
+
+	@Override
+	public WebXMLVO getWebXMLInfo(Map<String, String> params) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insertWebXMLInfo(WebXMLVO webXMLInfo) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateWebXMLInfo(WebXMLVO webXMLInfo) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public IbatisVO getIbatisInfo(String pr_no) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public QuartzVO getQuartzInfo(String pr_no) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ViewResolverVO getViewResolverInfo(String pr_no) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insertSpringInfo(IbatisVO iBatisInfo, QuartzVO quartzInfo, ViewResolverVO viewResolverInfo)
+			throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateSpringInfo(IbatisVO iBatisInfo, QuartzVO quartzInfo, ViewResolverVO viewResolverInfo)
+			throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	/*@Autowired
 	private SqlMapClient client;
 	
 	@Override
@@ -79,5 +133,5 @@ public class ISpringDaoImpl implements ISpringDao {
 				 this.client.delete("quartz.deleteQuartzInfo", pr_no);
 			 }
 		}
-	}
+	}*/
 }

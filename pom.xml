@@ -24,6 +24,7 @@
           <target>1.7</target>
         </configuration>
       </plugin>
+      <!-- webapp runner to run the java dynamic web project without installing tomcat server on Heroku  -->
       <plugin>
            <groupId>org.apache.maven.plugins</groupId>
            <artifactId>maven-dependency-plugin</artifactId>
@@ -95,6 +96,7 @@
 		<artifactId>hsqldb</artifactId>
 		<version>2.3.2</version>
 	 </dependency>
+	 <!-- Initially developeed with Oracle database in 2015, but license issue currently   -->
 <!-- 	 <dependency>
 		<groupId>com.oracle</groupId>
         <artifactId>ojdbc6</artifactId>
@@ -248,10 +250,7 @@
 		<groupId>org.jfrog.artifactory.client</groupId>
 		<artifactId>artifactory-java-client-api</artifactId>
 		<version>0.16</version>
-	</dependency>
-	
-		
-	
+	</dependency>	
 	
 	<dependency>
         <groupId>commons-logging</groupId>

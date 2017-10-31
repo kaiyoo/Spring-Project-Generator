@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/los/board/dao/IBoardDaoImpl.java=UTF-8
 encoding//src/los/ibatis/config/DBConnection.java=UTF-8
 encoding//src/los/wizard/controller/GenController.java=UTF-8
 encoding//src/los/wizard/dao/IGenDaoImpl.java=UTF-8

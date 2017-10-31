@@ -16,10 +16,98 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 @Repository
 public class IBoardDaoImpl implements IBoardDao {
 	
-	@Autowired
-	private SqlMapClient client;
+//Commented temporarily on 1/11/17 due to lack of database instance	on Heroku	
+//Override the unimplemented method to avoid error
 	
 	@Override
+	public List<BoardVO> getBoardList(Map<String, String> params) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getTotalBoardCount(Map<String, String> params) throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public BoardVO getBoardInfo(Map<String, String> params) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insertBoardInfo(BoardVO boardInfo) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateBoardInfo(BoardVO boardInfo) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteBoardInfo(Map<String, String> params) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteAllBoardInfo(Map<String, String> params) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<ReplyVO> getReplyList(Map<String, String> params) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void insertCommentInfo(ReplyVO commentInfo) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String insertReplyInfo(ReplyVO replyInfo) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteReplyInfo(Map<String, String> params) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteFileInfo(Map<String, String> params) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public FileItemVO getFileInfo(Map<String, String> params) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateFileDownHit(String file_no) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+	
+//Commented temporarily on 1/11/17 due to lack of database instance	on Heroku
+//	@Autowired
+//	private SqlMapClient client;
+	
+	/*@Override
 	public List<BoardVO> getBoardList(Map<String, String> params)	throws SQLException {
 		return this.client.queryForList("board.boardList", params);
 	}
@@ -105,7 +193,7 @@ public class IBoardDaoImpl implements IBoardDao {
 		}
 	}
 	
-	//리플라이
+	//由ы뵆�씪�씠
 	@Override
 	public List<ReplyVO> getReplyList(Map<String, String> params) throws SQLException {
 		return this.client.queryForList("board.replyList", params);
@@ -149,6 +237,6 @@ public class IBoardDaoImpl implements IBoardDao {
 	@Override
 	public FileItemVO getFileInfo(Map<String, String> params)throws SQLException{
 		return (FileItemVO)this.client.queryForObject("board.fileInfo",params);
-	}
+	}*/
 
 }
