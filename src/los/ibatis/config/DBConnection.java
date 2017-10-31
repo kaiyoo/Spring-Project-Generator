@@ -15,12 +15,12 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 
 @Component
 public class DBConnection {
-	@Autowired
+/*	@Autowired
 	private SqlMapClient client;
 	
 	public void changeUserConnection(DBVO userDBInfo) throws SQLException{
-		// 클래스. forName()
-		// 컨넥션 취득
+		// �겢�옒�뒪. forName()
+		// 而⑤꽖�뀡 痍⑤뱷
 		//
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -35,12 +35,12 @@ public class DBConnection {
 		client.setUserConnection(connection);
 	}
 	public void changeAdminConnection() throws SQLException{
-		// 클래스. forName()
-		// 컨넥션 취득
+		// �겢�옒�뒪. forName()
+		// 而⑤꽖�뀡 痍⑤뱷
 		// 
 		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@58.227.103.17:1521:XE" 
 																, "los", "los123");
 		client.setUserConnection(connection);
 	}
-	
+	*/
 }
