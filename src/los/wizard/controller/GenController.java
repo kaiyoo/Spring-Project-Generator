@@ -56,7 +56,7 @@ public class GenController {
 	}
 	
 	
-	// Table List 뿌려주는 부분
+	// Table List 肉뚮젮二쇰뒗 遺�遺�
 		@RequestMapping(value="tableList")
 		@ResponseBody
 		private String getTableList(DBVO userDBInfo) throws SQLException, JsonGenerationException, JsonMappingException, IOException{
@@ -69,8 +69,8 @@ public class GenController {
 			return jsonData;
 		}
 	
-		
-	@RequestMapping("insertGenInfo")
+//commented on 31/10/17 due to lack of database instance
+/*	@RequestMapping("insertGenInfo")
 	private ModelAndView insertGenInfo(ModelAndView view ,GenVO createTbInfo, String pr_no) throws SQLException{
 		this.connection.changeAdminConnection();
 		String prNo = "";
@@ -90,10 +90,10 @@ public class GenController {
 		
 		return view;
 		
-	}
+	}*/
 	
 	
-	// Table 생성시 fk Select Box Table부분
+	// Table �깮�꽦�떆 fk Select Box Table遺�遺�
 	@RequestMapping("createTableList")
 	@ResponseBody
 	private String tableInfoList(DBVO userDBInfo, String tblType) throws SQLException, JsonGenerationException, JsonMappingException, IOException{
@@ -108,7 +108,7 @@ public class GenController {
 	}
 	
 	
-	// Table 생성시 fk Select Box Column부분
+	// Table �깮�꽦�떆 fk Select Box Column遺�遺�
 	@RequestMapping("createColumnList")
 	@ResponseBody
 	private String columnInfoList(String loadColumnList,
@@ -124,7 +124,7 @@ public class GenController {
 	}
 	
 	
-	//Modal창 테이블 생성 (Create Button)
+	//Modal李� �뀒�씠釉� �깮�꽦 (Create Button)
 	@RequestMapping("createTableInfo")
 	@ResponseBody
 	private void createTable(DBVO userDBInfo,

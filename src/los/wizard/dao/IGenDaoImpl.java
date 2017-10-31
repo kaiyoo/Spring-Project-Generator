@@ -18,8 +18,74 @@ import los.vo.DBVO;
 
 @Repository
 public class IGenDaoImpl implements IGenDao {
+//commented on 31/10/17 due to lack of database instance
+	@Override
+	public DBVO getUserInfo(Map<String, String> params) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<UserTableVO> getTableList(DBVO userDBInfo) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public UserTableVO getTableView(Map<String, String> params) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<UserTableVO> getCreateTableList(String tblType, DBVO userDBInfo) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<UserTableVO> getCreateTableColList(Map<String, String> params, DBVO dbInfo) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void createTable(String tableList, DBVO userDBInfo) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void insertGenInfo(GenVO tbInfo) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<UserTableVO> loadColList(String loadColumnList, DBVO userDBInfo) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<GenVO> getCreateTblList(Map<String, String> params) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<UserTableVO> getPkTableList(Map<String, String> params, DBVO dbInfo) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<UserTableVO> getColumnList(Map<String, String> params, DBVO dbInfo) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
-	@Autowired
+	/*@Autowired
 	private SqlMapClient client;
 
 	@Autowired
@@ -148,6 +214,6 @@ public class IGenDaoImpl implements IGenDao {
 	      this.connection.changeAdminConnection();
 	      
 	      return userColumnList;
-	   }
+	   }*/
 	
 }

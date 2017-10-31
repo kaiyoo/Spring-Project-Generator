@@ -15,6 +15,8 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 
 @Component
 public class DBConnection {
+//commented on 31/10/17 due to lack of database instance	
+	
 /*	@Autowired
 	private SqlMapClient client;
 	
