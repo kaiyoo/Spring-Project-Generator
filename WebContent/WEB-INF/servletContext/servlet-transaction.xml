@@ -8,11 +8,12 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
 
-<bean id="transactionMgr" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+<!-- Commented temporarily on 1/11/17 due to lack of database instance	on Heroku	 -->
+
+<!-- <bean id="transactionMgr" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
 	p:dataSource-ref="dataSource">
 </bean>
 
-
-<tx:annotation-driven transaction-manager="transactionMgr"/>
+<tx:annotation-driven transaction-manager="transactionMgr"/> -->
 
 </beans>
